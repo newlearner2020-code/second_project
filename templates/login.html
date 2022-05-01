@@ -1,0 +1,44 @@
+{%extends "layout.html"%}
+{%import "bootstrap/wtf.html" as wtf%}
+{%block content%}
+<nav class="navbar navbar-expand-lg navbar-light bg-#78FEC7">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="{{url_for('home')}}">model.run</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('login')}}">login</a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link active" aria-current="page" href="{{url_for('signup')}}">sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('models')}}">models</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<form method="POST",action="/login/">
+  <div class="mb-3">
+    {{form.hidden_tag()}}
+    {{wtf.form_field (form.email)}}
+
+  </div>
+  <div class="mb-3">
+    {{wtf.form_field (form.password)}}
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">remember me </label>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
+</form>
+
+{%endblock%}
